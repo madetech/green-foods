@@ -1,17 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import useState from 'react';
+import {useState} from 'react';
 
 function App() {
 
-  // const [userInput, setUserInput] = useState("jhg");
-  
-  const getUserInput = (event) => {
-    console.log("this is the event =>", event)
+  const [userInput, setUserInput] = useState("jhg");
+  console.log(userInput)
+  // const getUserInput = (event) => {
+  //   console.log("this is the event =>", event)
 
-    const userInput = event.target.value
+  //   const userInput = event.target.value
     // console.log(userInput)
-  }
+  // }
 
 
   return (
@@ -20,15 +20,19 @@ function App() {
         <label>
           Enter barcode: 
           <input
-            onChange={
-              getUserInput
-            }>
+            onChange={(e) => {
+              setUserInput(e.target.value)
+            }}
+            >
           </input>
-          <button>
-            Submit
-          </button>
         </label>
       </form>
+      <p>
+        userInput here: {userInput}
+      </p>
+      <button>
+        Submit
+      </button>
     </div>
   );
 }
