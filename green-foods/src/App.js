@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function App() {
 
-  const [userInput, setUserInput] = useState("jhg");
+  const [userInput, setUserInput] = useState(" ");
+  const [productName, setProductName] = useState(" ");
+
+
   console.log(userInput)
   // const getUserInput = (event) => {
   //   console.log("this is the event =>", event)
@@ -13,6 +17,15 @@ function App() {
     // console.log(userInput)
   // }
 
+useEffect(() => {
+  axios('https://world.openfoodfacts.org/api/v0/product/80135463.json')
+  .then(response => {
+    setProductName(response.data.product.abbreviated_product_name)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}, [])
 
   return (
     <div className="App">
@@ -33,6 +46,9 @@ function App() {
       <button>
         Submit
       </button>
+      <p>
+        productName here: {productName}
+      </p>
     </div>
   );
 }
