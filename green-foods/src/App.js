@@ -7,38 +7,18 @@ function App() {
 
   const [userInput, setUserInput] = useState(" ");
   const [productName, setProductName] = useState(" ");
-  const [submitBarcode, setSubmitBarcode] = useState(" ");
-
-  // console.log(userInput)
-  // const getUserInput = (event) => {
-  //   console.log("this is the event =>", event)
-
-  //   const userInput = event.target.value
-    // console.log(userInput)
-  // }
+  const [imageURL, setImageURL] = useState(" ")
 
   const makecalltoAPI = (userInput) => {
-    console.log("button clicked")
-    console.log(userInput)
     axios(`https://world.openfoodfacts.org/api/v0/product/${userInput}.json`)
     .then(response => {
-      console.log(response)
-    setProductName(response.data.product.brands_tags[0])
-  })
+      setProductName(response.data.product.brands_tags[0])
+      setImageURL(response.data.product.image_front_small_url)
+    })
     .catch(error => {
     console.log(error)
   }) 
   }
-
-// useEffect(() => {
-//   axios(`https://world.openfoodfacts.org/api/v0/product/${submitBarcode}.json`)
-//   .then(response => {
-//     setProductName(response.data.product)
-//   })
-//   .catch(error => {
-//     console.log(error)
-//   })
-// }, [submitBarcode])
 
   return (
     <div className="App">
@@ -64,6 +44,7 @@ function App() {
       <p>
         productName here: {productName}
       </p>
+      <img src={imageURL}></img>
     </div>
   );
 }
