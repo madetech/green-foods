@@ -1,26 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 
 function App() {
 
-  const [userInput, setUserInput] = useState(" ");
-  const [productName, setProductName] = useState(" ");
-  const [imageURL, setImageURL] = useState(" ")
+  const [userInput, setUserInput] = useState("");
+  const [productName, setProductName] = useState("");
+  const [imageURL, setImageURL] = useState("")
   const [carbonTotal, setCarbonTotal] = useState(0)
 
-  const makecalltoAPI = (userInput) => {
+
+
+  const getProductWithBarcode = (userInput) => {
     axios(`https://world.openfoodfacts.org/api/v0/product/${userInput}.json`)
     .then(response => {
-      setProductName(response.data.product.brands_tags[0])
-      setImageURL(response.data.product.image_front_small_url)
-      setCarbonTotal(response.data.product.ecoscore_data.agribalyse.co2_total)
+      const prod = response.data.product
+
+      setProductName(prod.product_name)
+      setImageURL(prod.image_front_small_url)
+      setCarbonTotal(prod.ecoscore_data.agribalyse.co2_total)
     })
     .catch(error => {
     console.log(error)
   }) 
   }
+
+  let imageElement
+  if(imageURL) {
+    imageElement = <img alt={`${productName}`} src={imageURL}></img>
+    }
 
   return (
     <div className="App">
@@ -35,18 +43,16 @@ function App() {
           </input>
         </label>
       </form>
-      <p>
-        userInput here: {userInput}
-      </p>
       <button
-      onClick={() => makecalltoAPI(userInput)}>
+      onClick={() => getProductWithBarcode(userInput)}>
         Submit
       </button>
 
       <p>
-        productName here: {productName}
+        {productName}
       </p>
-      <img src={imageURL}></img>
+        {imageElement}
+       
       <h1>
         {Math.round(carbonTotal*100)}g CO² per 100g of product
       </h1>
@@ -55,13 +61,3 @@ function App() {
 }
 
 export default App;
-
-// display an input box 
-// submit button
-
-// take the user input
-
-// store the user input 
-// make API call with user input
-// display CO2 data 
-// display image of the product 
