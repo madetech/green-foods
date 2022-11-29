@@ -1,7 +1,5 @@
 import './App.css';
-import {useState} from 'react';
-import {getProductWithBarcode} from "./utils/product"
-import SearchProductWithBarcode from './components/searchProductWithBarcode';
+import SearchProductWithBarcode from './searchProductWithBarcode';
 
 function App() {
 
