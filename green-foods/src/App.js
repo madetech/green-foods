@@ -1,5 +1,5 @@
 import './App.css';
-import SearchProductWithBarcode from './searchProductWithBarcode';
+import SearchProductWithBarcode from './components/searchProductWithBarcode';
 
 function App() {
 
