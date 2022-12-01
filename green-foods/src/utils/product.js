@@ -7,7 +7,7 @@ const getProductWithBarcode = async (userInput) => {
     const productInfo = {
       name: prod.product_name,
       image: prod.image_front_small_url,
-      carbon: prod.ecoscore_data.agribalyse?.co2_total
+      carbon: prod.ecoscore_data.agribalyse?.co2_total || null
     }
     return productInfo
 }
