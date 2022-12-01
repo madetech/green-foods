@@ -15,7 +15,6 @@ function SearchProductWithBarcode() {
 
   const handleSearch = async (userInput) => {
     const productInfo = await getProductWithBarcode(userInput);
-    console.log(productInfo);
     setProductName(productInfo.name);
     setImageURL(productInfo.image);
     setCarbonTotal(productInfo.carbon);

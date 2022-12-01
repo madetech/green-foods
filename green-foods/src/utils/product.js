@@ -4,7 +4,6 @@ const getProductWithBarcode = async (userInput) => {
   const response = await axios(
     `https://world.openfoodfacts.org/api/v0/product/${userInput}.json`
   );
-  console.log(response);
   const prod = response.data.product;
 
   if (prod) {
