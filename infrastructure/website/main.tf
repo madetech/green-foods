@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "www_bucket" {
-  bucket = "green-foods-public-bucket"
+  bucket = "${var.environment}-green-foods-public-bucket"
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
@@ -12,7 +12,7 @@ resource "aws_s3_bucket_website_configuration" "website" {
 
 resource "aws_s3_bucket_acl" "website_acl" {
   bucket = aws_s3_bucket.www_bucket.id
-  acl = "public-read"
+  acl    = "public-read"
 }
 
 resource "aws_s3_bucket_policy" "website" {
