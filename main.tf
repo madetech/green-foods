@@ -7,14 +7,18 @@ terraform {
     }
 
     backend "s3" {
-      bucket = "patrycja-green-foods-tf-states"
-      key = "patrycja-green-foods-tf-states"
-      region = "eu-west-2"
+      bucket = "green-foods-tf-state"
+      key = "green-foods-tf-state"
+      region = "eu-west-1"
     }
 
     required_version = ">= 1.2.0"
 }
 
 provider "aws" {
-    region = "eu-west-2"
+    region = "eu-west-1"
+}
+
+module "website" {
+  source = "./infrastructure/website"
 }
