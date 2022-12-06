@@ -28,3 +28,8 @@ module "website" {
   source      = "./infrastructure/website"
   environment = var.environment
 }
+
+module "getProductByBarcodeLambda" {
+  source = "./infrastructure/lambda"
+  environment = var.environment
+}
