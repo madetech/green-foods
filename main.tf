@@ -33,3 +33,7 @@ module "getProductByBarcodeLambda" {
   source = "./infrastructure/lambda"
   environment = var.environment
 }
+
+output "website_url" {
+  value = module.website.website_url
+}

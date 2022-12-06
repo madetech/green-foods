@@ -69,3 +69,18 @@ Once this is complete, set the version of terraform to use with:
 ```bash
 tfenv use 1.3.6
 ```
+
+### Install Node.js
+
+This project is written in JavaScript/TypeScript. Node versions can be managed with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+```
+
+Once the script completes, install the current long term stable version of node:
+
+```bash
+nvm install 18.12.1
+nvm use 18.12.1
+```
