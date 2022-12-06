@@ -102,3 +102,39 @@ cd green-foods
 npm install
 npm test
 ```
+
+## Deployment
+
+Deployment is handled by Terraform. This requires an s3 bucket to store state.
+
+### Create a State Bucket
+
+The bucket can be created in the console or the cli, either way, the name of the bucket must match the one in `main.tf`.
+
+If you are using `aws-vault`:
+
+```bash
+aws-vault exec <PROFILE_NAME> --no-session -- aws s3 mb s3://green-foods-tf-state
+```
+
+Otherwise:
+
+```bash
+aws s3 mb s3://green-foods-tf-state
+```
+
+### Deploy the application
+
+Deployment to the development environment is aided by the make file.
+
+If you are using `aws-vault`:
+
+```bash
+aws-vault exec <PROFILE_NAME> --no-session -- make deploy
+```
+
+Otherwise:
+
+```bash
+make deploy
+```
