@@ -84,3 +84,21 @@ Once the script completes, install the current long term stable version of node:
 nvm install 18.12.1
 nvm use 18.12.1
 ```
+
+### Clone the repository
+
+Clone the repo from GitHub
+
+```bash
+git clone https://github.com/madetech/green-foods.git
+```
+
+### Install Dependencies & Run the Tests
+
+From the root of the repository:
+
+```bash
+cd green-foods
+npm install
+npm test
+```
