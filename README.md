@@ -2,6 +2,15 @@
 
 A web app for checking the amount of CO<sup>2</sup> is produced by the foods we buy.
 
+```mermaid
+flowchart LR
+  www_bucket[\"S3 Bucket"/] --> |serves| react_app["React App"]
+  react_app <--> |http| api_gw{"API Gateway"}
+  user(("User")) --> react_app
+  api_gw <--> |http| barcode_lambda["Lamba: getProductByBarcode"]
+  barcode_lambda <--> |http| open_foods("Open Food Facts API")  
+```
+
 ## Getting Set Up
 
 Installation instructions assume development is taking place on a Mac with a working `homebrew` installation. You will also need to either set up an AWS account, or ask your organisation for access to an account.
