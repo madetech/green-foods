@@ -132,7 +132,7 @@ Otherwise:
 aws s3 mb s3://green-foods-tf-state
 ```
 
-### Deploy the application
+### Deploy the application
 
 Deployment to the development environment is aided by the make file.
 
