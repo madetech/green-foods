@@ -30,10 +30,14 @@ module "website" {
 }
 
 module "getProductByBarcodeLambda" {
-  source = "./infrastructure/lambda"
+  source      = "./infrastructure/lambda"
   environment = var.environment
 }
 
 output "website_url" {
   value = module.website.website_url
+}
+
+output "api_url" {
+  value = module.getProductByBarcodeLambda.api_url
 }
