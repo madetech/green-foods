@@ -2,6 +2,7 @@
     "compilerOptions": {
         "lib": ["es2017"],
         "module": "commonjs",
+        "types": ["jest"],
         "outDir": "dist",
         "sourceMap": true,
         "strict": true,
@@ -9,6 +10,7 @@
         "resolveJsonModule": true
     },
     "include": [
-        "handler.ts"
+        "handler.ts",
+        "__test__"
     ]
 }
