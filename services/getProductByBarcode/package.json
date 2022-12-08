@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
-    "build": "tsc"
+    "build": "tsc",
+    "postbuild": "cp -R node_modules dist/"
   },
   "keywords": [],
   "author": "",

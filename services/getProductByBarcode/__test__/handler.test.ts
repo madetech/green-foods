@@ -25,6 +25,6 @@ describe("run", () => {
         const result: APIGatewayProxyResult = await run(event as APIGatewayProxyEventV2);
 
         expect(result.statusCode).toBe(200)
-        expect(result.body).toEqual(JSON.stringify({name: "Product Name", url: "url", carbon: "Carbon"}))
+        expect(result.body).toEqual(JSON.stringify({name: "Product Name", image: "url", carbon: "Carbon"}))
     })
 })
