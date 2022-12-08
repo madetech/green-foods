@@ -7,7 +7,7 @@ on:
     branches: [ main ]
   
 jobs:
-  unitTestWebsite:
+  unitTest:
 
     runs-on: ubuntu-latest
 
@@ -24,21 +24,3 @@ jobs:
       - name: run tests # npm test
         run: npm test
         working-directory: ./green-foods
-  
-  unitTestGetProductByBarcode:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout code # git clone
-        uses: actions/checkout@v3
-      - name: setup node # this is where we install node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: install node modules # npm install
-        run: npm ci
-        working-directory: ./services/getProductByBarcode
-      - name: run tests # npm test
-        run: npm test
-        working-directory: ./services/getProductByBarcode
