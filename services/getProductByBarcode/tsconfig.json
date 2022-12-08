@@ -1,16 +1,13 @@
 {
-    "compilerOptions": {
-        "lib": ["es2017"],
-        "module": "commonjs",
-        "types": ["jest"],
-        "outDir": "dist",
-        "sourceMap": true,
-        "strict": true,
-        "target": "es2017",
-        "resolveJsonModule": true
-    },
-    "include": [
-        "handler.ts",
-        "__test__"
-    ]
+  "compilerOptions": {
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "types": ["jest"],
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2017",
+    "resolveJsonModule": true
+  },
+  "include": ["handler.ts", "__test__"]
 }
