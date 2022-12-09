@@ -1,11 +1,17 @@
 MAKEFILE_PATH = $(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_DIR = $(dir $(MAKEFILE_PATH))
 
-build: 
-	cd $(CURRENT_DIR)/green-foods; npm run build
+buildWebsite: 
+	cd $(CURRENT_DIR)/green-foods; npm i; npm run build
+
+buildGetProductByBarcode: 
+	cd $(CURRENT_DIR)/services/getProductByBarcode; npm i; npm run build
+
+build: buildWebsite buildGetProductByBarcode
 
 apply: 
-	terraform init; terraform apply -var="environment=dev" --auto-approve	
+	terraform init
+	terraform apply -var="environment=dev" --auto-approve	
 
 upload:
 	aws s3 cp $(CURRENT_DIR)/green-foods/build s3://dev-green-foods-public-bucket/ --recursive
