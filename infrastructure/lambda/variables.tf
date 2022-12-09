@@ -13,3 +13,11 @@ variable "api_id" {
 variable "api_execution_arn" {
   type = string
 }
+
+variable "lambda_name" {
+  type = string
+}
+
+variable "lambda_path" {
+  type = string
+}
