@@ -42,33 +42,17 @@ resource "aws_lambda_function" "get_product_by_barcode" {
   role             = aws_iam_role.lambda.arn
 }
 
-resource "aws_apigatewayv2_api" "lambda" {
-  name          = "${var.environment}-green-foods"
-  protocol_type = "HTTP"
-}
-
-resource "aws_apigatewayv2_stage" "lambda" {
-  api_id      = aws_apigatewayv2_api.lambda.id
-  name        = "v1"
-  auto_deploy = true
-}
-
 resource "aws_apigatewayv2_integration" "lambda" {
-  api_id             = aws_apigatewayv2_api.lambda.id
+  api_id             = var.api_id
   integration_uri    = aws_lambda_function.get_product_by_barcode.invoke_arn
   integration_type   = "AWS_PROXY"
   integration_method = "POST"
 }
 
 resource "aws_apigatewayv2_route" "lambda" {
-  api_id    = aws_apigatewayv2_api.lambda.id
+  api_id    = var.api_id
   route_key = "GET /product/{barcode}"
   target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
-}
-
-resource "aws_cloudwatch_log_group" "lambda" {
-  name              = "/aws/api_gw/${aws_apigatewayv2_api.lambda.name}"
-  retention_in_days = 30
 }
 
 resource "aws_lambda_permission" "lambda" {
@@ -76,5 +60,5 @@ resource "aws_lambda_permission" "lambda" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.get_product_by_barcode.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_apigatewayv2_api.lambda.execution_arn}/*/*"
+  source_arn    = "${var.api_execution_arn}/*/*"
 }

@@ -35,10 +35,18 @@ module "lambda_bucket" {
   bucket_name = "green-foods-lambda"
 }
 
+module "api_gw" {
+  source = "./infrastructure/api"
+  environment = var.environment
+}
+
 module "getProductByBarcodeLambda" {
   source = "./infrastructure/lambda"
   environment = var.environment
   bucket_id = module.lambda_bucket.bucket_id
+  api_id = module.api_gw.api_id
+  api_execution_arn = module.api_gw.api_execution_arn
+  
 }
 
 output "website_url" {
@@ -46,5 +54,5 @@ output "website_url" {
 }
 
 output "api_url" {
-  value = module.getProductByBarcodeLambda.api_url
+  value = module.api_gw.api_url
 }
