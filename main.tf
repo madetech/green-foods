@@ -36,7 +36,7 @@ module "lambda_bucket" {
 }
 
 module "getProductByBarcodeLambda" {
-  source      = "./infrastructure/lambda"
+  source = "./infrastructure/lambda"
   environment = var.environment
   bucket_id = module.lambda_bucket.bucket_id
 }
