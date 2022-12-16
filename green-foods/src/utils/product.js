@@ -2,6 +2,8 @@ import axios from "axios";
 
 const getProductWithBarcode = async (userInput) => {
   const response = await axios(
+    // TODO: When ready to connect to backend, replace this url with:
+    // `${process.env.REACT_APP_API_URL}/v1/products/${userInput}`
     `https://world.openfoodfacts.org/api/v0/product/${userInput}.json`
   );
   const prod = response.data.product;
