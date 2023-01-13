@@ -1,27 +1,23 @@
-import "../App.css";
-import { useState } from "react";
-import { getProductWithBarcode } from "../utils/product";
+import '../App.css';
+import { handleSearch } from '../utils/handleSearch';
 
-function SearchProductWithBarcode() {
-  const [userInput, setUserInput] = useState("");
-  const [productName, setProductName] = useState("");
-  const [imageURL, setImageURL] = useState("");
-  const [carbonTotal, setCarbonTotal] = useState(0);
-
+function SearchProductWithBarcode({
+  carbonTotal,
+  userInput,
+  imageURL,
+  productName,
+  setUserInput,
+  setProductName,
+  setImageURL,
+  setCarbonTotal,
+}) {
   let imageElement;
   if (imageURL) {
     imageElement = <img alt={`${productName}`} src={imageURL}></img>;
   }
 
-  const handleSearch = async (userInput) => {
-    const productInfo = await getProductWithBarcode(userInput);
-    setProductName(productInfo.name);
-    setImageURL(productInfo.image);
-    setCarbonTotal(productInfo.carbon);
-  };
-
   return (
-    <div className="App">
+    <div className='App'>
       <form>
         <label>
           Enter barcode:
@@ -32,7 +28,13 @@ function SearchProductWithBarcode() {
           ></input>
         </label>
       </form>
-      <button onClick={() => handleSearch(userInput)}>Submit</button>
+      <button
+        onClick={() =>
+          handleSearch(userInput, setImageURL, setCarbonTotal, setProductName)
+        }
+      >
+        Submit
+      </button>
 
       <p>{productName}</p>
       {imageElement}
