@@ -1,6 +1,6 @@
 import { getProductWithBarcode } from './product';
 
-const handleSearch = async (
+const handleSearchByBarcode = async (
   userInput,
   setImageURL,
   setCarbonTotal,
@@ -12,4 +12,4 @@ const handleSearch = async (
   setCarbonTotal(productInfo.carbon);
 };
 
-export { handleSearch };
+export { handleSearchByBarcode };

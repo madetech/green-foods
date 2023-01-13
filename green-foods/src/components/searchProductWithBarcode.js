@@ -1,5 +1,5 @@
 import '../App.css';
-import { handleSearch } from '../utils/handleSearch';
+import { handleSearchByBarcode } from '../utils/handleSearchByBarcode';
 
 function SearchProductWithBarcode({
   carbonTotal,
@@ -17,7 +17,7 @@ function SearchProductWithBarcode({
   }
 
   return (
-    <div className='App'>
+    <div>
       <form>
         <label>
           Enter barcode:
@@ -30,7 +30,7 @@ function SearchProductWithBarcode({
       </form>
       <button
         onClick={() =>
-          handleSearch(userInput, setImageURL, setCarbonTotal, setProductName)
+          handleSearchByBarcode(userInput, setImageURL, setCarbonTotal, setProductName)
         }
       >
         Submit
