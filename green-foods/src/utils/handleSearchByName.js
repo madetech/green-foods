@@ -5,16 +5,15 @@ const handleSearchByName = async (
  names,
  setNames
 ) => {
-  const productInfo = await getProductsByName(userInput);
-  console.log("----------->", productInfo)
-    setNames(productInfo)
-    // console.log("Names here:", names)
 
-   const listOfProductNames = productInfo.map((product) => {
+    const productInfo = await getProductsByName(userInput);
+                                                                   
+    const listOfProductNames = productInfo.map((product) => {
     return product.name
    })
+
    setNames(listOfProductNames)
-//    console.log('list here', listOfProductNames)
+
 };
 
 export { handleSearchByName };
