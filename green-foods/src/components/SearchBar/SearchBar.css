@@ -1,0 +1,44 @@
+::placeholder {
+  font-style: italic;
+}
+
+#search-field {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  width: 90%;
+}
+
+#search-field:focus {
+  outline: none;
+}
+
+#search-form {
+  align-items: center;
+  border-bottom: 1.5px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  width: 250px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  #search-form {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #search-field {
+    font-size: 24px;
+  }
+
+  #search-form {
+    width: 580px;
+  }
+}
