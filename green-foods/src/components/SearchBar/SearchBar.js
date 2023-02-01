@@ -1,6 +1,6 @@
 import './SearchBar.css';
 
-const SearchBar = ({ handleClick, handleSearch }) => {
+const SearchBar = ({ handleClick, handleSearch, onChange }) => {
   return (
     <form id='search-form' onSubmit={handleSearch}>
       <label className='hidden' htmlFor='search-field'>
@@ -9,6 +9,7 @@ const SearchBar = ({ handleClick, handleSearch }) => {
       <input
         id='search-field'
         name='searchField'
+        onChange={onChange}
         placeholder='search a product'
         type='text'
         required
